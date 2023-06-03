@@ -17,7 +17,7 @@ public class Resource {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String name;
     private int size;
     private String url;
