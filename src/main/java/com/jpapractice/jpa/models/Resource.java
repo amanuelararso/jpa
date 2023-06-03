@@ -1,25 +1,26 @@
 package com.jpapractice.jpa.models;
 
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
-
+@DiscriminatorColumn(name="resource_type")
 public class Resource {
+
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue
+    private int id;
     private String name;
     private int size;
     private String url;
+
+
 }
