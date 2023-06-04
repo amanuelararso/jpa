@@ -1,9 +1,6 @@
 package com.jpapractice.jpa.models;
 
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -12,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@DiscriminatorColumn(name="resource_type")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Resource {
 
     @Id

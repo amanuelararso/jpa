@@ -33,13 +33,7 @@ public class JpaApplication {
 					.build();
 
 			videoRepository.save(video);
-			/*
-		|---------------+----+---------+------+-------------------------+------+---------+--------+
-		| resource_type | id | name    | size | url                     | type | content | length |
-		+---------------+----+---------+------+-------------------------+------+---------+--------+
-		| V             |  1 | Video 1 |   20 | www.resource.com/video1 | NULL | NULL    |     10 |
-		+---------------+----+---------+------+-------------------------+------+---------+--------+
-			* */
+
 
 			var file = File.builder()
 					.name("File 1")
