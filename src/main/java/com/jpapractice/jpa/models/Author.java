@@ -13,12 +13,13 @@ import java.util.*;
 @Entity
 public class Author extends BaseEntity {
 
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     @Column (
             unique = true
     )
     private String email;
+    private int age;
 
     @ManyToMany (mappedBy = "authors")
     private List<Course> courses;
