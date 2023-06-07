@@ -38,6 +38,8 @@ public class JpaApplication {
 				Author author = iterator.next();
 				System.out.println(author.getAge() + " "+ author.getFirstName()+ " " + author.getLastName());
 			}
+			authorRepository.updateAuthor(10023, 1);
+			authorRepository.updateAuthor("my@myemail.com", 2);
 
 		};
 	}
