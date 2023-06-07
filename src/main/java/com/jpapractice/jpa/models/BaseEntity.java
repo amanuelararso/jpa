@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @MappedSuperclass
 @SuperBuilder
@@ -20,8 +20,8 @@ public class BaseEntity {
     @GeneratedValue
     private Integer id;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime lastModifiedAt;
+    private Date createdAt;
+    private Date lastModifiedAt;
 
     private String createdBy;
     private String lastModifiedBy;

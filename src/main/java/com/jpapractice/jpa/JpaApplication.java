@@ -1,15 +1,13 @@
 package com.jpapractice.jpa;
 
-import com.jpapractice.jpa.models.File;
-import com.jpapractice.jpa.models.Text;
-import com.jpapractice.jpa.models.Video;
-import com.jpapractice.jpa.repositories.FileRepository;
-import com.jpapractice.jpa.repositories.TextRepository;
-import com.jpapractice.jpa.repositories.VideoRepository;
+import com.jpapractice.jpa.models.Author;
+import com.jpapractice.jpa.repositories.AuthorRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.Iterator;
 
 @SpringBootApplication
 public class JpaApplication {
@@ -20,38 +18,27 @@ public class JpaApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner (
-			VideoRepository videoRepository,
-			FileRepository fileRepository,
-			TextRepository textRepository
+			AuthorRepository authorRepository
 	) {
 		return args -> {
-			var video = Video.builder()
-					.name("Video 1")
-					.url("www.resource.com/video1")
-					.size(20) // in MB
-					.length(10) // minutes
-					.build();
+//			for (int i = 0; i < 50; i++) {
+//				Faker faker = new Faker();
+//				Author author = new Author();
+//				author.setFirstName(faker.name().firstName());
+//				author.setLastName(faker.name().lastName());
+//				author.setAge(faker.number().numberBetween(30,50));
+//				author.setCreatedAt(faker.date().birthday(15,60));
+//				author.setLastModifiedAt(faker.date().birthday());
+//				author.setLastModifiedBy(faker.funnyName().name());
+//				authorRepository.save(author);
+//			}
+			var list = authorRepository.findByFirstName("Blair");
+			Iterator<Author> iterator = list.iterator();
+			while (iterator.hasNext()) {
+				Author author = iterator.next();
+				System.out.println(author.getAge() + " "+ author.getFirstName()+ " " + author.getLastName());
+			}
 
-			videoRepository.save(video);
-
-
-			var file = File.builder()
-					.name("File 1")
-					.url("www.resource.com/file1")
-					.size(12) // MB
-					.type("pdf")
-					.build();
-
-			fileRepository.save(file);
-
-			var text = Text.builder()
-					.name("text1")
-					.url("www.resource.com/text1")
-					.size(5) // MB
-					.content("Json")
-					.build();
-
-			textRepository.save(text);
 		};
 	}
 

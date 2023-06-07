@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
     List<Author> findByFirstName(String fn);
+
     List<Author> findByFirstNameIgnoreCase(String fn);
 }
